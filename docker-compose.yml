@@ -1,53 +1,44 @@
-version: '3.8'
+version: '3.9'
 services:
   api-singlethreaded:
-    image: api-singlethreaded:latest
     build:
       context: ./api-singlethreaded
       dockerfile: Dockerfile
-    ports:
-      - "8080:8080"
     deploy:
       resources:
         limits:
-          cpus: '0.5'
-          memory: 512M
+          cpus: '2'
+          memory: 612M
         reservations:
-          memory: 256M
+          memory: 356M
     networks:
       - benchmark-network
 
   api-reactive:
-    image: api-reactive:latest
     build:
       context: ./api-reactive
       dockerfile: Dockerfile
-    ports:
-      - "8081:8080"
     deploy:
       resources:
         limits:
-          cpus: '0.5'
-          memory: 512M
+          cpus: '2'
+          memory: 712M
         reservations:
-          memory: 256M
+          memory: 356M
     networks:
       - benchmark-network
 
   api-multithreading:
-    image: api-multithreading:latest
     build:
       context: ./api-multithreading
       dockerfile: Dockerfile
-    ports:
-      - "8082:8080"
     deploy:
       resources:
         limits:
-          cpus: '0.5'
-          memory: 512M
+          cpus: '2'
+          memory: 712M
         reservations:
-          memory: 256M
+          memory: 356M
     networks:
       - benchmark-network
 
