@@ -42,8 +42,7 @@ Gatling to test and generate comparative insights about performance.
     │   │   ├── ...                                 # Other result files
     │   ├── simulations/                            # Gatling simulations
     │   │   ├── EmailSendingSimulation.scala        # Email sending simulation
-    │   ├── config/                                 # Gatling configurations
-    │   │   └── gatling.conf                        # Gatling configuration file
+    │   └── logback.xml                             # Gatling log configuration file
     └── docker-compose.yml                          # Docker Compose configuration file
 
 ## Running the Project
