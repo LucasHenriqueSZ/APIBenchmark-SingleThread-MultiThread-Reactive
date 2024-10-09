@@ -42,6 +42,20 @@ services:
     networks:
       - benchmark-network
 
+  gatling:
+    image: denvazh/gatling
+    volumes:
+      - ./gatling/simulations:/opt/gatling/user-files/simulations
+      - ./gatling/results:/opt/gatling/results
+      - ./gatling/logback.xml:/opt/gatling/conf/logback.xml
+    command: [ "gatling.sh", "-s", "simulations.EmailSendingSimulation" ]
+    depends_on:
+      - api-singlethreaded
+      - api-multithreading
+      - api-reactive
+    networks:
+      - benchmark-network
+
 networks:
   benchmark-network:
     driver: bridge
