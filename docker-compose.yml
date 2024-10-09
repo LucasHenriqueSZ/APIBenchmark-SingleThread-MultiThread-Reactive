@@ -1,0 +1,47 @@
+version: '3.9'
+services:
+  api-singlethreaded:
+    build:
+      context: ./api-singlethreaded
+      dockerfile: Dockerfile
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 612M
+        reservations:
+          memory: 356M
+    networks:
+      - benchmark-network
+
+  api-reactive:
+    build:
+      context: ./api-reactive
+      dockerfile: Dockerfile
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 712M
+        reservations:
+          memory: 356M
+    networks:
+      - benchmark-network
+
+  api-multithreading:
+    build:
+      context: ./api-multithreading
+      dockerfile: Dockerfile
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 712M
+        reservations:
+          memory: 356M
+    networks:
+      - benchmark-network
+
+networks:
+  benchmark-network:
+    driver: bridge
